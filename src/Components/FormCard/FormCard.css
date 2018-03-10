@@ -1,0 +1,23 @@
+.FormCard{
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+    background-color: white;
+    
+    border: 1px solid black;
+    
+}
+
+.form-card-encloser{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:0;
+    margin-right: 2%;
+    margin-top: 2%; 
+}
+
+.response-link{
+    align-self: center;
+}

@@ -1,0 +1,11 @@
+.FormContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;   
+}
+
+.form-container-enclose{
+    padding: 3%;
+    font-weight: bold;
+}
