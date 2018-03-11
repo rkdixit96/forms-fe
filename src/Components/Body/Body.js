@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Body.css';
 
@@ -8,8 +9,10 @@ class Body extends Component {
   constructor(props) {
     super(props);
     Body.propTypes = {
+      showBody: PropTypes.bool,
     };
     Body.defaultProps = {
+      showBody: false,
     };
     this.state = {
       forms: [],
@@ -28,7 +31,7 @@ class Body extends Component {
   render() {
     return (
       <div className="Body" >
-        <FormContainer forms={this.state.forms} />
+        {this.props.showBody && <FormContainer forms={this.state.forms} />}
       </div>
 
     );

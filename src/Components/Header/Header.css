@@ -2,4 +2,5 @@
     display: flex;
     background-color: #604baf;
     height: 15%;
+    align-content: center;
 }

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './FormContainer.css';
+import './AnswerFormContainer.css';
 
 import FormCard from '../FormCard/FormCard';
 
-class FormContainer extends Component {
+class AnswerFormContainer extends Component {
   constructor(props) {
     super(props);
-    FormContainer.propTypes = {
-      forms: PropTypes.array.isRequired,
+    AnswerFormContainer.propTypes = {
+      questions: PropTypes.array.isRequired,
     };
-    FormContainer.defaultProps = {
+    AnswerFormContainer.defaultProps = {
 
     };
     this.state = {
@@ -28,7 +28,7 @@ class FormContainer extends Component {
     return (
       <div className="form-container-enclose">
           AVAILABLE FORMS
-        <div className="FormContainer">
+        <div className="AnswerFormContainer">
           {this.populateForms()}
         </div>
       </div>
@@ -36,4 +36,4 @@ class FormContainer extends Component {
   }
 }
 
-export default FormContainer;
+export default AnswerFormContainer;
