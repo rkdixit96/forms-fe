@@ -1,35 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import './AnswerFormContainer.css';
 
-import FormCard from '../FormCard/FormCard';
+import AnswerForm from '../AnswerForm/AnswerForm';
 
 class AnswerFormContainer extends Component {
   constructor(props) {
     super(props);
     AnswerFormContainer.propTypes = {
-      questions: PropTypes.array.isRequired,
+      formId: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
     };
     AnswerFormContainer.defaultProps = {
-
     };
     this.state = {
+      questions: [],
     };
 
-    this.populateForms = this.populateForms.bind(this);
+    this.populateAnswerForms = this.populateAnswerForms.bind(this);
+    // this.onAnswerChange = this.onAnswerChange.bind(this);
   }
 
-  populateForms() {
-    return this.props.forms.map(form => <FormCard formId={form.id} formTitle={form.title} />);
+  componentDidMount() {
+    axios.get(`/questions/${this.props.formId}`).then((questions) => {
+      this.setState({
+        questions: questions.data.questions,
+      });
+    });
   }
+
+  populateAnswerForms() {
+    return this.state.questions.map(question => <AnswerForm questionText={question.questionText} answerType={question.answerType} isRequired={question.isRequired} questionId={question.id} />);
+  }
+
+  //   onAnswerChange(questionId,)
 
 
   render() {
     return (
-      <div className="form-container-enclose">
-          AVAILABLE FORMS
+      <div className="answer-form-container-enclose">
+        {this.props.title}
         <div className="AnswerFormContainer">
-          {this.populateForms()}
+          {this.populateAnswerForms()}
         </div>
       </div>
     );

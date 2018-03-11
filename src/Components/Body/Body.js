@@ -10,6 +10,7 @@ class Body extends Component {
     super(props);
     Body.propTypes = {
       showBody: PropTypes.bool,
+      onClick: PropTypes.func.isRequired,
     };
     Body.defaultProps = {
       showBody: false,
@@ -31,7 +32,7 @@ class Body extends Component {
   render() {
     return (
       <div className="Body" >
-        {this.props.showBody && <FormContainer forms={this.state.forms} />}
+        {this.props.showBody && <FormContainer forms={this.state.forms} onClick={this.props.onClick} />}
       </div>
 
     );

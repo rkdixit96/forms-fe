@@ -9,6 +9,7 @@ class FormContainer extends Component {
     super(props);
     FormContainer.propTypes = {
       forms: PropTypes.array.isRequired,
+      onClick: PropTypes.func.isRequired,
     };
     FormContainer.defaultProps = {
 
@@ -20,7 +21,7 @@ class FormContainer extends Component {
   }
 
   populateForms() {
-    return this.props.forms.map(form => <FormCard formId={form.id} formTitle={form.title} />);
+    return this.props.forms.map(form => <FormCard formId={form.id} formTitle={form.title} onClick={this.props.onClick} />);
   }
 
 
