@@ -20,7 +20,7 @@ class FormCreator extends Component {
       formTitle: '',
       questions: [{
         questionText: '',
-        answerType: 'Short answer',
+        answerType: 'Short Answer',
         isRequired: false,
       }],
     };
@@ -38,7 +38,7 @@ class FormCreator extends Component {
         formTitle: '',
         questions: [{
           questionText: '',
-          answerType: 'Short answer',
+          answerType: 'Short Answer',
           isRequired: false,
         }],
       });
@@ -64,7 +64,7 @@ class FormCreator extends Component {
   addQuestion() {
     const newQuestionsArray = this.state.questions.concat({
       questionText: '',
-      answerType: 'Short answer',
+      answerType: 'Short Answer',
       isRequired: false,
     });
     this.setState({

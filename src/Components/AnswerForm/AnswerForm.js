@@ -1,6 +1,11 @@
+import 'react-datepicker/dist/react-datepicker.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
 import './AnswerForm.css';
+
 
 import InputContainer from '../InputContainer/InputContainer';
 
@@ -12,6 +17,7 @@ class AnswerForm extends Component {
       answerType: PropTypes.string.isRequired,
       isRequired: PropTypes.bool.isRequired,
       questionId: PropTypes.number.isRequired,
+      onChange: PropTypes.func.isRequired,
     };
     AnswerForm.defaultProps = {
     };
@@ -22,19 +28,30 @@ class AnswerForm extends Component {
   }
 
   onAnswerChange(event) {
-    this.setState({
-      answer: event.target.value,
-    });
+    if (this.props.answerType === 'Date') {
+      this.setState({
+        answer: event,
+      }, () => {
+        this.props.onChange(this.props.questionId, this.state.answer);
+      });
+    } else {
+      this.setState({
+        answer: event.target.value,
+      }, () => {
+        this.props.onChange(this.props.questionId, this.state.answer);
+      });
+    }
   }
-
 
   render() {
     return (
       <div className="AnswerForm" >
         {this.props.questionText}
-        {this.props.answerType === 'Short Answer' && <InputContainer value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
-        {this.props.answerType === 'Paragraph' && <textarea value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
-        {this.props.answerType === 'Date' && <div> Select Date </div> }
+        <div>
+          {(this.props.answerType === 'Short Answer') && <InputContainer value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
+          {(this.props.answerType === 'Paragraph') && <textarea value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
+          {(this.props.answerType === 'Date') && <DatePicker selected={this.state.answer} onChange={this.onAnswerChange} />}
+        </div>
       </div>
     );
   }

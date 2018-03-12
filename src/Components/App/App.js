@@ -6,6 +6,7 @@ import Body from '../Body/Body';
 import FloatingContainer from '../FloatingContainer/FloatingContainer';
 import FormCreator from '../FormCreator/FormCreator';
 import AnswerFormContainer from '../AnswerFormContainer/AnswerFormContainer';
+import FormResponse from '../FormResponse/FormResponse';
 
 class App extends Component {
   constructor(props) {
@@ -14,15 +15,36 @@ class App extends Component {
       page: 'Forms',
       answerFormId: 999,
       answerFormName: '',
+      responseFormName: '',
+      responseQuestions: '',
     };
     this.submitFormOnClick = this.submitFormOnClick.bind(this);
     this.createFormOnClick = this.createFormOnClick.bind(this);
     this.selectFormOnClick = this.selectFormOnClick.bind(this);
+    this.onAnswerSubmit = this.onAnswerSubmit.bind(this);
+    this.onResponseClick = this.onResponseClick.bind(this);
   }
 
-  createFormOnClick() {
+  onResponseClick(formTitle, questions) {
     this.setState({
-      page: 'CreateForm',
+      responseFormName: formTitle,
+      responseQuestions: questions,
+      page: 'Response',
+    });
+  }
+
+  onAnswerSubmit() {
+    this.setState({
+      page: 'Forms',
+      answerFormId: '',
+      answerFormName: '',
+    });
+  }
+  selectFormOnClick(formId, title) {
+    this.setState({
+      page: 'Answer',
+      answerFormId: formId,
+      answerFormName: title,
     });
   }
 
@@ -32,11 +54,10 @@ class App extends Component {
     });
   }
 
-  selectFormOnClick(formId, title) {
+
+  createFormOnClick() {
     this.setState({
-      page: 'Answer',
-      answerFormId: formId,
-      answerFormName: title,
+      page: 'CreateForm',
     });
   }
 
@@ -45,7 +66,7 @@ class App extends Component {
       return (
         <div className="App">
           <Header showButton onClick={this.createFormOnClick} />
-          <Body showBody onClick={this.selectFormOnClick} />
+          <Body showBody onClick={this.selectFormOnClick} onResponseClick={this.onResponseClick} />
         </div>
       );
     }
@@ -65,10 +86,22 @@ class App extends Component {
         <div className="App">
           <Header />
           <FloatingContainer >
-            <AnswerFormContainer formId={this.state.answerFormId} title={this.state.answerFormName} />
+            <AnswerFormContainer formId={this.state.answerFormId} title={this.state.answerFormName} onSubmit={this.onAnswerSubmit} />
           </FloatingContainer>
           <Body />
         </div>
+      );
+    }
+    if (this.state.page === 'Response') {
+      return (
+        <div className="App">
+          <Header />
+          <FloatingContainer >
+            <FormResponse formTitle={this.state.responseFormName} questions={this.state.responseQuestions} />
+          </FloatingContainer>
+          <Body />
+        </div>
+
       );
     }
     return (
