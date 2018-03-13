@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -19,7 +20,10 @@ class HeaderButton extends Component {
   render() {
     return (
       <div className="HeaderButton" onClick={this.props.onClick} >
-        {this.props.label}
+        <i className="material-icons">add_circle</i>
+        <div className="label">
+          {this.props.label}
+        </div>
       </div>
     );
   }

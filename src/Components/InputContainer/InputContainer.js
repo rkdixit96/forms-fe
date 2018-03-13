@@ -20,8 +20,8 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div className="InputContainer" >
-        <input value={this.props.value} type="text" placeholder={this.props.placeholder} onChange={this.props.onChange} />
+      <div>
+        <input className={`input-box ${this.props.className}`}value={this.props.value} type="text" placeholder={this.props.placeholder} onChange={this.props.onChange} />
       </div>
     );
   }

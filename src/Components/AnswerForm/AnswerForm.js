@@ -48,7 +48,7 @@ class AnswerForm extends Component {
       <div className="AnswerForm" >
         {this.props.questionText}
         <div>
-          {(this.props.answerType === 'Short Answer') && <InputContainer value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
+          {(this.props.answerType === 'Short Answer') && <InputContainer className="answer-input" value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
           {(this.props.answerType === 'Paragraph') && <textarea value={this.state.answer} placeholder="Enter answer" onChange={this.onAnswerChange} />}
           {(this.props.answerType === 'Date') && <DatePicker selected={this.state.answer} onChange={this.onAnswerChange} />}
         </div>

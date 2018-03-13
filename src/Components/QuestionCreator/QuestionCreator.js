@@ -57,9 +57,14 @@ class QuestionCreator extends Component {
   render() {
     return (
       <div className="QuestionCreator">
-        <InputContainer value={this.state.questionText} placeholder="Enter your question" onChange={this.onInputChange} />
-        <DropDown value={this.state.answerType} onChange={this.onAnswerTypeChange} />
-        <input type="checkbox" value="Required" checked={this.state.isRequired} onChange={this.onIsRequiredChange} />
+        <div className="question-container">
+          <InputContainer className="question-input" value={this.state.questionText} placeholder="Enter your question" onChange={this.onInputChange} />
+          <DropDown value={this.state.answerType} onChange={this.onAnswerTypeChange} />
+        </div>
+        <div className="checkbox">
+          <input type="checkbox" value="Required" checked={this.state.isRequired} onChange={this.onIsRequiredChange} />
+          <small>Required</small>
+        </div>
       </div>
     );
   }

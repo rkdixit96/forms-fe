@@ -1,0 +1,12 @@
+.TransparentButton{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    color: #604baf;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    align-content: center;
+    font-weight: bold;
+    
+}

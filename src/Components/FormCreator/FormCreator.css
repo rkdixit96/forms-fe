@@ -1,0 +1,29 @@
+.title-input{
+    font-size: 25px;
+    width:60%;
+    padding-top: 10%;
+}
+
+.form-header{
+    display: flex;
+    flex-grow: 1;
+    height:100px;
+    justify-content: space-between;
+    padding:3%;
+    border-bottom: 1px solid gray;
+}
+
+.form-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-button{
+    color: #604baf;
+}
+
+.FormCreator{
+    display: flex;
+    flex-direction: column;
+}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import './AnswerFormContainer.css';
 
 import AnswerForm from '../AnswerForm/AnswerForm';
+import TransparentButtton from '../TransparentButton/TransparentButton';
 
 class AnswerFormContainer extends Component {
   constructor(props) {
@@ -102,10 +103,14 @@ class AnswerFormContainer extends Component {
   render() {
     return (
       <div className="answer-form-container-enclose">
-        {this.props.title}
+        <div className="form-title">
+          {this.props.title}
+        </div>
         <div className="AnswerFormContainer">
           {this.populateAnswerForms()}
-          <input type="button" value="Submit" disabled={this.state.disabled} onClick={this.onAnswersSubmit} />
+        </div>
+        <div>
+          <TransparentButtton className="answer-submit" label="SUBMIT" disabled={this.state.disabled} onClick={this.onAnswersSubmit} />
         </div>
       </div>
     );

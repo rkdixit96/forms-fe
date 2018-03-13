@@ -5,6 +5,8 @@ import './FormCreator.css';
 
 import QuestionCreator from '../QuestionCreator/QuestionCreator';
 import InputContainer from '../InputContainer/InputContainer';
+import TransparentButton from '../TransparentButton/TransparentButton';
+import AddButton from '../AddButton/AddButton';
 
 class FormCreator extends Component {
   constructor(props) {
@@ -80,9 +82,13 @@ class FormCreator extends Component {
   render() {
     return (
       <div className="FormCreator" >
-        <InputContainer value={this.state.formTitle} placeholder="Enter form title" onChange={this.onTitleChange} />
-        <input type="button" value="Submit" onClick={this.onFormSubmit} />
-        <input type="button" value="Add Question" onClick={this.addQuestion} />
+        <div className="form-header">
+          <InputContainer className="title-input" value={this.state.formTitle} placeholder="Form title" onChange={this.onTitleChange} />
+          <div className="form-buttons">
+            <TransparentButton label="SUBMIT" onClick={this.onFormSubmit} />
+            <AddButton className="add-button" onClick={this.addQuestion} />
+          </div>
+        </div>
         {this.populateQuestions()}
       </div>
     );

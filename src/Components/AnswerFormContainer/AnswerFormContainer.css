@@ -1,0 +1,15 @@
+.answer-form-container-enclose{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.form-title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.answer-submit{
+    padding-top:5%;
+    margin-left: 0;
+}

@@ -1,0 +1,24 @@
+.QuestionCreator{
+    display: flex;
+    padding: 1%;
+    flex-direction: column;
+}
+
+.question-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 4%;
+    padding-bottom: 10%;
+    border-bottom: 1px solid gray;
+}
+
+.question-input{
+    width: 250%;
+    font-size: 14px;
+}
+
+.checkbox{
+    align-self: right;
+    padding-left: 85%;
+}
+
