@@ -1,0 +1,23 @@
+.question-response-container{
+}
+.response-question{
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 2%;
+    width:100%
+}
+
+.even{
+    background-color: #ede6f6;
+    padding-left:2%
+}
+
+.odd{
+    background-color: #faf9fe;
+    padding-left:2% 
+}
+
+.resp-table{
+    width: 100%;
+    padding-top: 1%;
+}

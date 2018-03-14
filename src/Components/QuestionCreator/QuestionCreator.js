@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './QuestionCreator.css';
 
 import InputContainer from '../InputContainer/InputContainer';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import DropDown from '../DropDown/DropDown';
 
 class QuestionCreator extends Component {
@@ -14,10 +15,12 @@ class QuestionCreator extends Component {
       answerType: PropTypes.string.isRequired,
       isRequired: PropTypes.bool.isRequired,
       onChange: PropTypes.func.isRequired,
+      onDelete: PropTypes.func.isRequired,
     };
     QuestionCreator.defaultProps = {
 
     };
+
     this.state = {
       questionText: props.questionText,
       questionNumber: props.questionNumber,
@@ -28,6 +31,21 @@ class QuestionCreator extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onAnswerTypeChange = this.onAnswerTypeChange.bind(this);
     this.onIsRequiredChange = this.onIsRequiredChange.bind(this);
+    this.deleteHandler = this.deleteHandler.bind(this);
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps.questionText, this.props.questionText);
+    if (nextProps.questionText !== this.props.questionText) {
+      console.log('new props');
+      this.setState({
+        questionText: nextProps.questionText,
+        questionNumber: nextProps.questionNumber,
+        answerType: nextProps.answerType,
+        isRequired: nextProps.isRequired,
+      });
+    }
   }
 
   onIsRequiredChange(event) {
@@ -54,7 +72,12 @@ class QuestionCreator extends Component {
     });
   }
 
+  deleteHandler() {
+    this.props.onDelete(this.props.questionNumber);
+  }
+
   render() {
+    // console.log('question creater: ', this.state.questionText, this.props.questionText);
     return (
       <div className="QuestionCreator">
         <div className="question-container">
@@ -62,8 +85,11 @@ class QuestionCreator extends Component {
           <DropDown value={this.state.answerType} onChange={this.onAnswerTypeChange} />
         </div>
         <div className="checkbox">
-          <input type="checkbox" value="Required" checked={this.state.isRequired} onChange={this.onIsRequiredChange} />
-          <small>Required</small>
+          <DeleteButton onClick={this.deleteHandler} />
+          <div>
+            <input type="checkbox" value="Required" checked={this.state.isRequired} onChange={this.onIsRequiredChange} />
+            <small>Required</small>
+          </div>
         </div>
       </div>
     );

@@ -29,8 +29,10 @@ class FormResponse extends Component {
 
   render() {
     return (
-      <div className="form-container-enclose">
-        {this.props.formTitle}
+      <div className="form-response-enclose">
+        <div className="form-response-title">
+          {this.props.formTitle}
+        </div>
         <div className="FormResponse">
           {this.populateQuestions()}
         </div>

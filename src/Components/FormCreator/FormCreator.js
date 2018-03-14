@@ -32,6 +32,7 @@ class FormCreator extends Component {
     this.populateQuestions = this.populateQuestions.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.deleteQuestion = this.deleteQuestion.bind(this);
   }
 
   onFormSubmit() {
@@ -74,12 +75,28 @@ class FormCreator extends Component {
     });
   }
 
-  populateQuestions() {
-    return this.state.questions.map((question, index) => <QuestionCreator questionNumber={index} questionText={question.questionText} answerType={question.answerType} isRequired={question.isRequired} onChange={this.onQuestionChange} />);
+  deleteQuestion(index) {
+    const q = [...this.state.questions];
+    q.splice(index, 1);
+    this.setState({
+      questions: q,
+    });
+    // const qArrayp1 = this.state.questions.slice(0, index);
+    // const qArrayp2 = this.state.questions.slice(index + 1, this.state.questions.length);
+    // const qArray = qArrayp1.concat(qArrayp2);
+    // this.setState({
+    //   questions: qArray,
+    // });
+    // this.setState(this.state);
+  }
+
+  populateQuestions(questions) {
+    return questions.map((question, index) => <QuestionCreator key={index} questionNumber={index} questionText={question.questionText} answerType={question.answerType} isRequired={question.isRequired} onChange={this.onQuestionChange} onDelete={this.deleteQuestion} />);
   }
 
 
   render() {
+    // console.log('Paridghi');
     return (
       <div className="FormCreator" >
         <div className="form-header">
@@ -89,7 +106,10 @@ class FormCreator extends Component {
             <AddButton className="add-button" onClick={this.addQuestion} />
           </div>
         </div>
-        {this.populateQuestions()}
+        {/* {this.populateQuestions(this.state.questions)} */}
+        {
+          this.state.questions.map((question, index) => <QuestionCreator key={index} questionNumber={index} questionText={question.questionText} answerType={question.answerType} isRequired={question.isRequired} onChange={this.onQuestionChange} onDelete={this.deleteQuestion} />)
+        }
       </div>
     );
   }
